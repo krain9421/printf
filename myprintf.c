@@ -16,7 +16,7 @@ int getsz(char *s)
 	int i = 0;
 
 	if (s == NULL)
-	{ return (NULL); }
+	{ return (i); }
 	else
 	{
 		while (s[i])
@@ -39,7 +39,6 @@ int _printf(const char *format, ...)
 {
 	int i = 0; /* character index */
 	int count = 0;
-	char *byte;
 	char *str;
 	va_list args;
 
@@ -64,7 +63,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(args, char *);
-					write(1, str, getsz(s));
+					write(1, str, getsz(str));
 					break;
 				case '%':
 					write(1, "%", 1);
