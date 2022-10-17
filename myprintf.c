@@ -80,7 +80,8 @@ int _printf(const char *format, ...)
 			}
 			i++;
 		}
+		va_end(args);
+		return (count);
 	}
-	va_end(args);
-	return (count);
+	return (-1);
 }
