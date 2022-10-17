@@ -38,59 +38,42 @@ int getsz(char *s)
 
 int _printf(const char *format, ...)
 {
-	int i = 0; /* character index */
-	int count = 0;
-	char c;
-	char *str;
+	int i = 0, count = 0;
+	int (*fn)(va_list);
 	va_list args;
 
 	if (format != NULL)
-	{
-		va_start(args, format);
-		while (format[i] != '\0')
+	{	va_start(args, format);
+		for (; format[i]; i++)
 		{
-			while (format[i] != '%' && format[i] != '\0')
+			if (format[i] != '%')
 			{
-				write(1, format + i++, 1);
+				write(1, format + i, 1);
 				count++;
 			}
-			if (format[i] == '\0')
-			{ break; }
-			i++;
-			switch (format[i])
+			else if (format[i] == '%')
 			{
-				case 'c':
-					c = va_arg(args, int);
-					write(1, &c, 1);
-					count++;
-					break;
-				case 's':
-					str = va_arg(args, char *);
-					if (str == NULL)
-					{
-						str = "(null)";
-						write(1, str, getsz(str));
-						count += getsz(str);
-					}
-					else
-					{
-					write(1, str, getsz(str));
-					count += getsz(str);
-					}
-					break;
-				case '%':
-					(void) args;
-					write(1, "%", 1);
-					count++;
-					break;
-				case '\0':
+				i++;
+				fn = get_pr_func(format[i]);
+				if (fn == NULL)
+				{}
+				else
+				{ count += fn(args); }
+				if (format[i] == '\0')
 					return (-1);
+				if (format[i] != '\0' && fn == NULL)
+				{
+					write(1, format + i - 1, 1);
+					write(1, format + i, 1);
+					count += 2;
+				}
+
 			}
-			i++;
 		}
 		va_end(args);
 		return (count);
 	}
 	return (-1);
 }
+
 
