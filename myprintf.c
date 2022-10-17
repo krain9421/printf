@@ -92,7 +92,7 @@ int _printf(const char *format, ...)
 		va_end(args);
 		return (count);
 	}
-	count = -1
+	count = -1;
 	return (count);
 }
 
