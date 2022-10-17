@@ -4,7 +4,8 @@
 #include <stdarg.h>
 
 /**
-* getsz - function returns the bytes in a string
+* getsz - function returns the number
+* of bytes in a string excluding the null byte
 * @s: The string to be checked
 *
 * Return: size of string in bytes
@@ -39,6 +40,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0; /* character index */
 	int count = 0;
+	char c;
 	char *str;
 	va_list args;
 
@@ -58,18 +60,24 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					str[0] = va_arg(args, int);
-					write(1, str, 1);
+					c = va_arg(args, int);
+					write(1, &c, 1);
+					count++;
 					break;
 				case 's':
 					str = va_arg(args, char *);
 					write(1, str, getsz(str));
+					count += getsz(str);
 					break;
 				case '%':
 					write(1, "%", 1);
+					count++;
 					break;
+				default:
+					write(1, format + i - 1, 1);
+					write(1, format + i, 1);
+					count += 2;
 			}
-			count++;
 			i++;
 		}
 	}
