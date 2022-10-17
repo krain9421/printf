@@ -66,8 +66,17 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(args, char *);
+					if (str == NULL)
+					{
+						str = "(null)";
+						write(1, str, getsz(str));
+						count += getsz(str);
+					}
+					else
+					{
 					write(1, str, getsz(str));
 					count += getsz(str);
+					}
 					break;
 				case '%':
 					write(1, "%", 1);
@@ -85,3 +94,4 @@ int _printf(const char *format, ...)
 	}
 	return (-1);
 }
+
