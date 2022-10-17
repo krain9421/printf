@@ -79,12 +79,13 @@ int _printf(const char *format, ...)
 					}
 					break;
 				case '%':
+					(void) args;
 					write(1, "%", 1);
 					count++;
 					break;
 				case '\0':
 					return (-1);
-					break;
+
 				default:
 					write(1, format + i - 1, 1);
 					write(1, format + i, 1);
