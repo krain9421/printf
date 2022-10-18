@@ -17,6 +17,28 @@ int _print_char(va_list args)
 }
 
 /**
+* _print_int - prints integer
+* @args: argument list
+* Return: number of printed int
+*/
+
+int _print_int(va_list args)
+{
+	/* Function code here */
+}
+
+/**
+* _print_int_i - prints integer
+* @args: argument list
+* Return: number of printed int
+*/
+
+int _print_int_i(va_list args)
+{
+	/* Function code here */
+}
+
+/**
 * _print_string - prints bytes of a string
 * excluding the null byte
 * @args: argument list
