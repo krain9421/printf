@@ -23,5 +23,6 @@ int _print_char(va_list);
 int _print_string(va_list);
 int _print_mod(va_list);
 int (*get_pr_func(char c))(va_list);
-#endif
+
+#endif /* MAIN_H */
 
