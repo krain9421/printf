@@ -16,6 +16,8 @@ int (*get_pr_func(char c))(va_list)
 		{'c', _print_char},
 		{'s', _print_string},
 		{'%', _print_mod},
+		{'d', _print_int},
+		{'i', _print_int_i},
 		{'\0', NULL}
 	};
 	int i = 0;
