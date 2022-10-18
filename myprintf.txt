@@ -5,7 +5,7 @@
 
 /**
 * getsz - function returns the number
-* of bytes in a string excluding the null byte
+* of bytes in a string excluding the null byte.
 * @s: The string to be checked
 *
 * Return: size of string in bytes
