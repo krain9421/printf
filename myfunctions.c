@@ -24,7 +24,14 @@ int _print_char(va_list args)
 
 int _print_int(va_list args)
 {
-	/* Function code here */
+	int i = va_arg(args, int);
+	int count = 0;
+	char *buf;
+
+	buf = convert(i, 10);
+	write(1, buf, getsz(buf));
+	count += getsz(buf);
+	return (count);
 }
 
 /**
@@ -35,7 +42,14 @@ int _print_int(va_list args)
 
 int _print_int_i(va_list args)
 {
-	/* Function code here */
+	int i = va_arg(args, int);
+	int count = 0;
+	char *buf;
+
+	buf = convert(i, 10);
+	write(1, buf, getsz(buf));
+	count += getsz(buf);
+	return (count);
 }
 
 /**
