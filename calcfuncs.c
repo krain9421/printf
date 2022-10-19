@@ -6,7 +6,7 @@
 * @num: number to convert
 * @base: base for number to be converted to
 *
-* Return: number in string format
+* Return: number in string format.
 */
 
 char *convert(unsigned int num, int base)
