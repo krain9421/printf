@@ -66,7 +66,7 @@ int _print_int_i(va_list args)
 	else
 		num = i;
 
-	buf = convert(i, 10);
+	buf = convert(num, 10);
 	write(1, buf, getsz(buf));
 	count += getsz(buf);
 	return (count);

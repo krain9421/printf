@@ -22,7 +22,7 @@ int getsz(char *s);
 int _print_char(va_list);
 int _print_string(va_list);
 int _print_mod(va_list);
-char *convert(int num, int base);
+char *convert(unsigned int num, int base);
 int _print_int(va_list);
 int _print_int_i(va_list);
 int (*get_pr_func(char c))(va_list);
