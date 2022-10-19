@@ -25,10 +25,20 @@ int _print_char(va_list args)
 int _print_int(va_list args)
 {
 	int i = va_arg(args, int);
+	unsigned int num;
 	int count = 0;
 	char *buf;
 
-	buf = convert(i, 10);
+	if (i < 0)
+	{
+		count++;
+		write(1, "-", 1);
+		num = i * -1;
+	}
+	else
+		num = i;
+
+	buf = convert(num, 10);
 	write(1, buf, getsz(buf));
 	count += getsz(buf);
 	return (count);
@@ -43,8 +53,18 @@ int _print_int(va_list args)
 int _print_int_i(va_list args)
 {
 	int i = va_arg(args, int);
+	unsigned int num;
 	int count = 0;
 	char *buf;
+
+	if (i < 0)
+	{
+		count++;
+		write(1, "-", 1);
+		num = i * -1;
+	}
+	else
+		num = i;
 
 	buf = convert(i, 10);
 	write(1, buf, getsz(buf));

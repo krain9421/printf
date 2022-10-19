@@ -9,29 +9,19 @@
 * Return: number in string format
 */
 
-char *convert(int num, int base)
+char *convert(unsigned int num, int base)
 {
 	static const char digits[] = "0123456789ABCDEF";
 	static char buffer[50];
 	char *ptr;
-	char pfx;
 
 	ptr = &buffer[49];
 	*ptr = '\0';
-
-	if (num < 0)
-	{
-		num *= -1;
-		pfx = '-';
-	}
 
 	do {
 		*--ptr = digits[num % base];
 		num /= base;
 	} while (num != 0);
-
-	if (pfx)
-		*--ptr = pfx;
 
 	return (ptr);
 }
