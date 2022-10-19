@@ -11,7 +11,7 @@
 
 char *convert(int num, int base)
 {
-	static const char digits[] = "0123456789ABCDEF";
+	char digits[] = "0123456789ABCDEF";
 	char buffer[50];
 	char *ptr;
 	char pfx;
